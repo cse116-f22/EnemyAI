@@ -33,7 +33,7 @@ class AIPlayer(val id: String) {
 
 
   // TODO: LT4
-  def chooseAction(gameState: AIGameState, decisionTree: BinaryTreeNode[DecisionTreeValue]): AIAction = {
+  def makeDecision(gameState: AIGameState, decisionTree: BinaryTreeNode[DecisionTreeValue]): AIAction = {
     MovePlayer(this.id, Math.random() - 0.5, Math.random() - 0.5)
   }
 

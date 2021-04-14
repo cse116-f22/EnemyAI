@@ -13,7 +13,7 @@ class AIActor(gameActor: ActorRef, id: String) extends Actor {
       val gameState: AIGameState = new AIGameState
       gameState.parseJsonState(gs.gameState)
 
-      val action: AIAction = aiPlayer.chooseAction(gameState, aiPlayer.decisionTree(aiPlayer))
+      val action: AIAction = aiPlayer.makeDecision(gameState, aiPlayer.decisionTree(aiPlayer))
 
       gameActor ! action
   }
