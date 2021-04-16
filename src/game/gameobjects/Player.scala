@@ -11,7 +11,7 @@ class Player(inputLocation: PhysicsVector,
   val speed: Double = 4.0
   val orientation: PhysicsVector = new PhysicsVector(1.0, 0.0)
 
-  def move(direction: PhysicsVector) {
+  def move(direction: PhysicsVector): Unit = {
     val normalDirection = direction.normal2d()
     this.velocity = new PhysicsVector(normalDirection.x * speed, normalDirection.y * speed)
     this.orientation.x = this.velocity.x
