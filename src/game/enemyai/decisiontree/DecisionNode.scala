@@ -11,7 +11,7 @@ class DecisionNode(f: AIGameState => Int) extends DecisionTreeValue {
 
   override def action(gameState: AIGameState): AIAction = {
     // This should never be called
-    StopPlayer("")
+    StopPlayer("AI_0")
   }
 
 }
