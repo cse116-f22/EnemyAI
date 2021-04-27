@@ -32,7 +32,7 @@ class AIGameState {
       )
 
       for (loc <- potentialConnections) {
-        if (graph.nodes.contains(gridID(loc))){
+        if (graph.nodes.contains(gridID(loc)) && loc.x < this.levelWidth && loc.y < this.levelHeight){
           graph.addEdge(id, gridID(loc))
         }
 
