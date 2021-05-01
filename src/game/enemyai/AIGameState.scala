@@ -26,10 +26,13 @@ class AIGameState {
     }
 
     for ((id, location) <- graph.nodes) {
-      val potentialConnections = List(
-        new GridLocation(location.x + 1, location.y),
-        new GridLocation(location.x, location.y + 1)
-      )
+      var potentialConnections = List[GridLocation]()
+      if (location.x + 1 < levelWidth) {
+        potentialConnections = (new GridLocation(location.x + 1, location.y)) :: potentialConnections
+      }
+      if (location.y + 1 < levelHeight) {
+        potentialConnections = (new GridLocation(location.x, location.y + 1)) :: potentialConnections
+      }
 
       for (loc <- potentialConnections) {
         if (graph.nodes.contains(gridID(loc)) && loc.x < this.levelWidth && loc.y < this.levelHeight){
