@@ -105,7 +105,7 @@ object GameServer {
 
     actorSystem.scheduler.scheduleWithFixedDelay(FiniteDuration(16, duration.MILLISECONDS), FiniteDuration(16, duration.MILLISECONDS), gameActor, UpdateGame)
     actorSystem.scheduler.scheduleWithFixedDelay(FiniteDuration(8, duration.MILLISECONDS), FiniteDuration(32, duration.MILLISECONDS), server, SendGameState)
-    actorSystem.scheduler.scheduleWithFixedDelay(FiniteDuration(100, duration.MILLISECONDS), FiniteDuration(100, duration.MILLISECONDS), ai, Update)
+    actorSystem.scheduler.scheduleWithFixedDelay(FiniteDuration(1000, duration.MILLISECONDS), FiniteDuration(1000, duration.MILLISECONDS), ai, Update)
   }
 
 }
