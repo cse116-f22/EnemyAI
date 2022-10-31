@@ -13,15 +13,17 @@ class AIGameState {
   var playerLocations: LinkedListNode[PlayerLocation] = _
   var wallLocations: List[GridLocation] = List()
 
+  def gridLocationToId(location: GridLocation): Int = {
+    location.x + location.y * this.levelWidth
+  }
 
   def levelAsGraph(): Graph[GridLocation] = {
     val graph = new Graph[GridLocation]()
-    val gridID: GridLocation => Int = location => location.x + location.y * this.levelWidth
 
     for (i <- 0 until this.levelWidth; j <- 0 until this.levelHeight) {
       val location = new GridLocation(i, j)
       if (!this.wallLocations.contains(location)) {
-        graph.addNode(gridID(location), location)
+        graph.addNode(this.gridLocationToId(location), location)
       }
     }
 
@@ -35,8 +37,8 @@ class AIGameState {
       }
 
       for (loc <- potentialConnections) {
-        if (graph.nodes.contains(gridID(loc)) && loc.x < this.levelWidth && loc.y < this.levelHeight){
-          graph.addEdge(id, gridID(loc))
+        if (graph.nodes.contains(this.gridLocationToId(loc)) && loc.x < this.levelWidth && loc.y < this.levelHeight){
+          graph.addEdge(id, this.gridLocationToId(loc))
         }
 
       }
